@@ -1,0 +1,19 @@
+{
+  "name": "book-trading-club",
+  "version": "0.0.1",
+  "description": "List your books and find books to trade",
+  "main": "server.js",
+  "repository": "",
+  "author": "Luke Walker <luke.walker@gmail.com> (http://lukewalker.org)",
+  "dependencies": {
+    "angular": "^1.5.7",
+    "angular-animate": "^1.5.7",
+    "angular-aria": "^1.5.7",
+    "angular-material": "^1.1.0-rc.5",
+    "angular-messages": "^1.5.7",
+    "angular-route": "^1.5.7",
+    "angular-sanitize": "^1.5.7",
+    "express": "^4.14.0",
+    "google-books-search": "^0.3.0"
+  }
+}

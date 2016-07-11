@@ -1,0 +1,19 @@
+<div class="searchView">
+  <h1>Add Books</h1>
+  <div layout="row" flex>
+    <md-input-container flex class="md-icon-float md-block md-title" id="searchbar">
+      <label>Search by title, author or ISBN</label>
+      <input ng-model="term" type="search" id="searchterm">
+    </md-input-container>
+  <div>
+  <md-grid-list layout="row" md-row-height="27px">
+  </md-grid-list>
+</div>
+<script>
+  $('#searchterm').on("keypress", function(e) {
+    var code = e.keyCode || e.which;
+    if(code == 13) { //Enter keycode
+      $('#search').trigger('click');
+    }
+  })
+</script>

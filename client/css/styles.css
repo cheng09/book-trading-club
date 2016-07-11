@@ -1,0 +1,17 @@
+body{
+  height: 100% !important;
+}
+
+.cover {
+  max-width: 300px;
+  margin: 1rem;
+  text-align: center;
+  padding: 1rem;
+  border: 1px solid gray;
+  background-color: white;
+  height: 230px;
+}
+
+#searchbar {
+  width: 50%;
+}
