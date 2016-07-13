@@ -1,0 +1,12 @@
+<h1>Sign In</h1>
+<form ng-submit="login.onSubmit()">
+  <md-input-container>
+    <label for="email">Email address</label>
+    <input type="email" id="email" ng-model="login.credentials.email">
+  </md-input-container>
+  <md-input-container>
+    <label for="password">Password</label>
+    <input type="password" id="password" ng-model="login.credentials.password">
+  </md-input-container>
+  <md-button type="submit" class="md-primary md-raised">Sign In!</md-button>
+</form>

@@ -3,7 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name=viewport content="width=device-width, initial-scale=1">
-    <title>Book Trading Club: Trade Your Books</title>
+    <title>Book Trade: A Clube for Trading Your Books</title>
+    <base href="/">
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc.5/angular-material.min.css">
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,500,700,300,400italic' rel='stylesheet' type='text/css'> 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -15,23 +16,23 @@
         <md-sidenav
             class="md-sidenav-left"
             md-component-id="left"
-            md-is-locked-open="$mdMedia('gt-md')"
-            md-disable-backdrop
-            md-whiteframe="4">
+            md-whiteframe="8">
           <md-toolbar class="md-theme-indigo">
-            <h1 class="md-toolbar-tools">Book Trading Club</h1>
+            <h1 class="md-toolbar-tools">A Book Trading Club</h1>
           </md-toolbar>
-          <md-content layout-padding ng-controller="LeftCtrl">
-            <md-button ng-click="close()" class="md-primary" hide-gt-md>
-              Close Sidenav Left
-            </md-button>
-            <p hide show-gt-md>
-              
-            </p>
+          <md-content layout-padding>
+            
+            <ul class='sidenavlist'> 
+             <li ng-repeat="item in appCtrl.menu"><md-button ng-href="{{ item.link }}"><md-icon layout-margin>{{ item.icon }}</md-icon>{{ item.title }}</md-button></li>
+            </ul>
           </md-content>
         </md-sidenav>
         <md-content flex layout-padding>
-          <div layout="column" layout-fill layout-align="top left" ng-view>
+          <md-nav-bar layout="row" class="fixed" layout-align="start center">
+            <md-icon layout-margin ng-click="appCtrl.toggleSidenav()" aria-label="Open Menu">menu</md-icon>
+            <h1 layout-margin>Book Trading Club</h1>
+          </md-nav-bar>  
+          <div class="bodycontent" layout="column" layout-fill layout-align="top left" ng-view>
           </div>
           <div flex></div>
         </md-content>
@@ -47,9 +48,14 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-aria.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc.5/angular-material.min.js"></script>
     <script src="/app/app.module.js"></script>
+    <script src="/app/authentication.service.js"></script>
+    <script src="/app/data.service.js"></script>
     <script src="/app/app.controller.js"></script>
-    <script src="/app/left.controller.js"></script>
+    <script src="/app/allbooks.controller.js"></script>
     <script src="/app/search.controller.js"></script>
+    <script src="/app/register.controller.js"></script>
+    <script src="/app/login.controller.js"></script>
+    <script src="/app/profile.controller.js"></script>
   </body>
 </html>
 

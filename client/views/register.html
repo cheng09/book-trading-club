@@ -1,0 +1,16 @@
+<h1>Register</h1>
+<form ng-submit="register.onSubmit()">
+  <md-input-container>
+    <label for="name">Username</label>
+    <input type="text" id="name" ng-model="register.credentials.name">
+  </md-input-container>
+  <md-input-container>
+    <label for="email">Email address</label>
+    <input type="email" id="email" ng-model="register.credentials.email">
+  </md-input-container>
+  <md-input-container>
+    <label for="password">Password</label>
+    <input id="password" type="password" ng-model="register.credentials.password">
+  </md-input-container>
+  <md-button type="submit" class="md-primary md-raised">Register</md-button>
+</form>

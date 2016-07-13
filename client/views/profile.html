@@ -1,0 +1,26 @@
+<h1>{{ profile.user.name }}</h1>
+<h3>{{ profile.user.name }}'s info</h3>
+<p>Email: {{ profile.user.email }}</p>
+<h3>{{ profile.user.name }}'s collection</h3>
+<p ng-show="profile.collection.length >= 5">These are the books you own right now. You can always <a href="/search">add more</a>. Anything you trade will be added/removed automatically.</p>
+<p ng-hide="profile.collection.length > 5">Not much in your collection yet? You should <a href="/search">add something!</a></p>
+<div class="grid" ng-show="profile.collection">
+  <md-grid-list md-cols="5" md-cols-md=4 md-cols-sm="2" md-cols-xs="1" md-gutter="1em" md-row-height="270px">   
+    <md-grid-tile ng-repeat="book in profile.collection" md-colspan="1" md-rowspan="1">
+      <div class="cover" md-whiteframe>
+        <h2 ng-hide="book.thumbnail">{{ book.title }}</h2>
+        <img src="{{ book.thumbnail }}" ng-show="book.thumbnail">
+        <md-button class="removeItem" layout="row" layout-align="center center" ng-click="profile.remove(book)">
+          <md-icon>delete forever</md-icon>
+          <span>Remove</span>
+        </md-button>
+      </div>
+    </md-grid-tile>
+  </md-grid-list>
+</div>
+<script>
+  $('div').on('click', '.removeItem', function(e) {
+    var target = $(e.target).parent().parent();
+    $(target).css('display', 'none');
+  })
+</script>

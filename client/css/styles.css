@@ -1,17 +1,88 @@
 body{
   height: 100% !important;
+  width: 100%;
+}
+
+.fixed {
+  position: fixed;
+  top: 10;
+  left: 10;
+  z-index: 6;
+}
+
+.bodycontent {
+  padding-top: 60px;  
+}
+
+.searchhead {
+  display: inline-block;
+  position: relative;
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.searchsub {
+  display: inline-block;
+  position: relative;
+  font-size: 16px;
+}
+.jumbotron {
+  color: white;
+  height: 200px;
+  background-color: #7986CB;
+}
+
+.headline {
+  margin: 30px auto 10px auto;
+  font-size: 80px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.subhead {
+  font-size: 24px;
+  margin: 0 auto 30px auto;
+}
+
+.subpar {
+  line-height: 1;
+  margin: 5px 0;
 }
 
 .cover {
-  max-width: 300px;
-  margin: 1rem;
   text-align: center;
   padding: 1rem;
   border: 1px solid gray;
   background-color: white;
   height: 230px;
+  width: 176px;
+}
+
+.own-it {
+  color: green;
+}
+
+.sidenavlist, .featurelist {
+  list-style-type: none;
+}
+
+.featurelist > li {
+  font-size: 20px;
+  margin: 10px auto;
+}
+
+.copyright {
+  margin-top: 50px;
+}
+
+.pink {
+  color: pink;
 }
 
 #searchbar {
-  width: 50%;
+  max-width: 70%;
+}
+
+#searchbar > input {
+    width: 600px;
 }

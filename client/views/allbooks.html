@@ -1,0 +1,7 @@
+<div layout="row" flex layout-align="start start">
+  <h1>All Books</h1>
+  <p>All books available</p>
+</div>
+<div infinite-scroll='loadMore()' infinite-scroll-distance='2'>
+  <img ng-repeat='image in images' ng-src='http://placehold.it/225x250&text={{image}}'>
+</div>

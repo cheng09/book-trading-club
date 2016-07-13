@@ -1,13 +1,36 @@
-<div class="searchView">
-  <h1>Add Books</h1>
-  <div layout="row" flex>
-    <md-input-container flex class="md-icon-float md-block md-title" id="searchbar">
+<div layout="column" layout-align="start start">
+  <div layout="row" layout-align="center center"></div>
+    <div class="searchhead">
+      Add Books
+    </div>
+    <div class="searchsub">Start by adding some books to your collection</div>
+  </div>
+  <div layout="row" layout-align="start start">
+    <md-input-container id="searchbar">
       <label>Search by title, author or ISBN</label>
       <input ng-model="term" type="search" id="searchterm">
     </md-input-container>
-  <div>
-  <md-grid-list layout="row" md-row-height="27px">
-  </md-grid-list>
+    <md-button layout="row" layout-align="center center" ng-click="search.search(term)" class="md-raised md-icon-button" id="search">
+      <md-icon>search</md-icon>
+    </md-button>
+  </div>
+</div>  
+<div layout="column" flex>
+  <div ng-show="search.results" layout="column" layout-fill layout-margin>
+    <md-grid-list md-cols="5" md-cols-md=4 md-cols-sm="2" md-cols-xs="1" md-gutter="1em" md-row-height="270px">   
+      <md-grid-tile ng-repeat="book in search.results track by $index" md-colspan="1" md-rowspan="1">
+        <div class="cover" md-whiteframe>
+          <h2 ng-hide="book.thumbnail">{{ book.title }}</h2>
+          <img src="{{ book.thumbnail }}" ng-show="book.thumbnail">
+          <md-button layout="row" layout-align="center center" ng-click="search.addBook(book)" ng-show="!search.inCollection(book)">
+            <md-icon>check_box</md-icon>
+            <span>Add to My Books</span>
+          </md-button>
+          <p class="own-it" ng-show="search.inCollection(book)">You have this book</p>
+        </div>
+      </md-grid-tile>
+    </md-grid-list>
+  </div>
 </div>
 <script>
   $('#searchterm').on("keypress", function(e) {
@@ -15,5 +38,5 @@
     if(code == 13) { //Enter keycode
       $('#search').trigger('click');
     }
-  })
+  });
 </script>
