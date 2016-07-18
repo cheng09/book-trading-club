@@ -1,25 +1,22 @@
 <div layout="column" layout-align="start start">
-  <div layout="row" layout-align="center center"></div>
-    <div class="searchhead">
-      Add Books
-    </div>
-    <div class="searchsub">Start by adding some books to your collection</div>
-  </div>
-  <div layout="row" layout-align="start start">
-    <md-input-container id="searchbar">
-      <label>Search by title, author or ISBN</label>
-      <input ng-model="term" type="search" id="searchterm">
+  <h3 ng-hide="search.results" class="searchhead">Add Books</h3>
+  <p ng-hide="search.results">Start by adding some books to your collection</p>
+  <div layout="row" layout-fill layout-align="start center">
+    <md-button ng-show="search.results" ng-click="search.results = [];">Clear Results</md-button>
+    <md-input-container id="searchbar" flex="70">
+      <label for="searchterm">Search by title, author or ISBN</label>
+      <input type="search" id="searchterm" ng-model="term" class="stretch">
     </md-input-container>
-    <md-button layout="row" layout-align="center center" ng-click="search.search(term)" class="md-raised md-icon-button" id="search">
+    <md-button layout="row"  layout-align="start center" ng-click="search.search(term)" class="md-raised md-icon-button" id="search">
       <md-icon>search</md-icon>
     </md-button>
   </div>
 </div>  
 <div layout="column" flex>
   <div ng-show="search.results" layout="column" layout-fill layout-margin>
-    <md-grid-list md-cols="5" md-cols-md=4 md-cols-sm="2" md-cols-xs="1" md-gutter="1em" md-row-height="270px">   
+    <md-grid-list md-cols="5" md-cols-md="4" md-cols-sm="3" md-cols-xs="1" md-gutter="1em" md-row-height="270px">   
       <md-grid-tile ng-repeat="book in search.results track by $index" md-colspan="1" md-rowspan="1">
-        <div class="cover" md-whiteframe>
+        <div class="cover" md-whiteframe layout="column" layout-align="center center">
           <h2 ng-hide="book.thumbnail">{{ book.title }}</h2>
           <img src="{{ book.thumbnail }}" ng-show="book.thumbnail">
           <md-button layout="row" layout-align="center center" ng-click="search.addBook(book)" ng-show="!search.inCollection(book)">

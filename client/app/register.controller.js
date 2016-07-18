@@ -18,10 +18,11 @@
     };
     
     function onSubmit() {
+      console.log(vm.credentials);
       AuthenticationService 
         .register(vm.credentials)
         .error(function(err) {
-          alert(err);
+          alert(err.message);
         })
         .then(function() {
           $location.path('profile');

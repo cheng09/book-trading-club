@@ -8,10 +8,14 @@ var userSchema = new mongoose.Schema({
     unique: true,
     required: true
   },
-  name: {
+  username: {
     type: String,
     required: true
   },
+  firstname: String,
+  lastname: String,
+  city: String,
+  state: String,
   hash: String,
   salt: String
 });

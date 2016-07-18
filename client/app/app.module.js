@@ -40,6 +40,11 @@
         controllerAs: 'allbooks',
         templateUrl: 'views/allbooks.html'
       })
+      .when('/settings', {
+        controller: 'SettingsCtrl',
+        controllerAs: 'settings',
+        templateUrl: 'views/settings.html'
+      })
       .when('/', {
         templateUrl: 'views/home.html'
       })

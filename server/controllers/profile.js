@@ -13,8 +13,28 @@ module.exports.profileRead = function(req, res) {
     User
       .findById(req.payload._id)
       .exec(function(err, user) {
+        if(err) { throw err };
         res.status(200).json(user);
       });
   }
 
+};
+
+module.exports.profileSet = function(req, res) {
+
+  console.log('Hello! ' + JSON.stringify(req.body));
+  var doc = {
+    firstname: req.body.firstname,
+    lastname: req.body.lastname,
+    city: req.body.city,
+    state: req.body.state
+  };
+  console.log('Setting user ' + JSON.stringify(doc));
+  User
+    .findOneAndUpdate({ username: req.body.username }, {$set: doc}, {new: true}, function(err, user) {
+      if (err) {
+        throw err;
+      }    
+      res.status(200).json(user);
+    });
 };

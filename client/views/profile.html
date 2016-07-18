@@ -1,22 +1,100 @@
-<h1>{{ profile.user.name }}</h1>
-<h3>{{ profile.user.name }}'s info</h3>
-<p>Email: {{ profile.user.email }}</p>
-<h3>{{ profile.user.name }}'s collection</h3>
-<p ng-show="profile.collection.length >= 5">These are the books you own right now. You can always <a href="/search">add more</a>. Anything you trade will be added/removed automatically.</p>
-<p ng-hide="profile.collection.length > 5">Not much in your collection yet? You should <a href="/search">add something!</a></p>
-<div class="grid" ng-show="profile.collection">
-  <md-grid-list md-cols="5" md-cols-md=4 md-cols-sm="2" md-cols-xs="1" md-gutter="1em" md-row-height="270px">   
-    <md-grid-tile ng-repeat="book in profile.collection" md-colspan="1" md-rowspan="1">
-      <div class="cover" md-whiteframe>
-        <h2 ng-hide="book.thumbnail">{{ book.title }}</h2>
-        <img src="{{ book.thumbnail }}" ng-show="book.thumbnail">
-        <md-button class="removeItem" layout="row" layout-align="center center" ng-click="profile.remove(book)">
-          <md-icon>delete forever</md-icon>
-          <span>Remove</span>
-        </md-button>
-      </div>
-    </md-grid-tile>
-  </md-grid-list>
+<div layout="column" class="bodycontent">
+<div layout="column" layout-margin>
+  <md-card style="min-width: 500px;">
+      <md-toolbar class="md-hue-1" Layout-align="end start" layout-padding>
+        <md-cart-title layout="column">
+          <md-card-title-text>
+            <span class="md-headline">Your Account Statistics</span>
+          </md-card-title-text>
+        </md-card-title>
+      </md-toolbar>
+      <md-card-content layout="column">
+        <h3>Your Statistics</h3>
+        <table id="user-stats">
+          <tbody>
+            <tr>
+              <td class="stat">{{ profile.collection.length }}</td>
+              <td>books in your collection</td>
+              <td><a href="/search">Add books you own</a></td>
+            </tr>
+            <tr>
+              <td class="stat">{{ profile.wishlist.length }}</td>
+              <td>books on your wishlist</td>
+              <td><a href="/books">Find more books you want</a></td>
+            </tr>
+            <tr>
+              <td class="stat">{{ profile.pending.length }}</td>
+              <td>pending trades for you to approce</td>
+              <td><a href="/pending">See your pending trade list</a></td>
+            </tr>
+            <tr>
+              <td class="stat">{{ profile.approved.length }}</td>
+              <td>approved trades for you to complete</td>
+              <td><a href="/approved">See your approved, in progress trades</a></td>
+            </tr>
+          </tbody>
+          </table> 
+        
+          <h4>Completed trades</h4> 
+          <p>You have successfully completed {{ profile.totaltrades }} — you have given away {{ profile.tradesgiven }} books, and received {{ profile.tradesreceived }} books.</p>
+        </div>
+      </md-card-content>
+    </md-card>
+
+  <div layout="row">
+    <md-card style="min-width: 250px;">
+      <md-toolbar class="md-hue-3" Layout-align="end start"layout-padding>
+        <md-cart-title layout="column">
+          <md-card-title-text>
+            <span class="md-headline">Your Details</span>
+          </md-card-title-text>
+        </md-card-title>
+      </md-toolbar>
+      <md-card-content layout="column">
+        <p>Email: {{ profile.user.email }}</p>
+        <p ng-show="profile.user.firstname">Name: {{ profile.user.firstname }} {{ profile.user.lastname }}</p>
+        <p ng-show="profile.user.city">Location: {{ profile.user.city}}, {{profile.user.state }}</p>
+        <p ng-hide="profile.user.city">You are more likely to be considered for trades if you add your location <a href="/settings">to your profile</a>.</p>
+      </md-card-content>
+      <md-card-actions layout="column" layout-align="end center">
+        <md-button><md-icon>settings</md-icon> Update Settings</md-button>
+      </md-card-actions>
+    </md-card>
+  
+    <md-card style="min-width: 250px;">
+      <md-toolbar class="md-accent" Layout-align="end start" layout-padding>
+        <md-cart-title>
+          <md-card-title-text>
+            <span class="md-headline">Note on Privacy</span>
+          </md-card-title-text>
+        </md-card-title>
+      </md-toolbar>
+      <md-card-content>
+        <p>Your details kept private by default. Until you wishlist a book, which kicks off the trade process, no one else will see any of your personal information. The only information made public will be the titles/covers of any books you add to your collection.</p>
+        <p>After you wishlist a book, the users who own this title will be notified that a user in a given city is looking that book. They will also see a summary of your trading activity (completed trades), but not your contact info/name/username.</p>
+        <p>Once a user accepts the trade, you will have access to each other's contact information, including email. Arrangements to complete the trade must be made via email, outside of this site.</p>
+      </md-card-content>
+    </md-card>
+  </div>
+</div>
+<div layout="column" layout-margin class="grid">
+  <h3>Your Book Collection</h3>
+  <p ng-show="profile.collection.length >= 5">These are the books you own right now. You can always <a href="/search">add more</a>. Anything you trade will be added/removed automatically.</p>
+  <p ng-hide="profile.collection.length > 5">Not much in your collection yet? You should <a href="/search">add something!</a></p>
+  <div class="grid" ng-show="profile.collection">
+    <md-grid-list md-cols="2"  md-cols-sm="3" md-cols-md="4" md-cols-lg="6" md-cols-xl="7" md-gutter="1em" md-row-height="270px" flex>   
+      <md-grid-tile ng-repeat="book in profile.collection" md-colspan="1" md-rowspan="1" flex flex-md="20" flex-lg="17" flex="14">
+        <div class="cover" md-whiteframe layout="column" layout-align="center center">
+          <h2 ng-hide="book.thumbnail">{{ book.title }}</h2>
+          <img src="{{ book.thumbnail }}" ng-show="book.thumbnail">
+          <md-button class="removeItem" layout="row" layout-align="center center" ng-click="profile.remove(book)">
+            <md-icon>delete forever</md-icon>
+            <span>Remove</span>
+          </md-button>
+        </div>
+      </md-grid-tile>
+    </md-grid-list>
+  </div>
 </div>
 <script>
   $('div').on('click', '.removeItem', function(e) {

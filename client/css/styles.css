@@ -3,6 +3,18 @@ body{
   width: 100%;
 }
 
+h3, p {
+  margin-top: 5px;
+}
+
+h3 {
+  margin-bottom: 5px;
+}
+
+p {
+  margin-bottom: 20px;
+}
+
 .fixed {
   position: fixed;
   top: 10;
@@ -12,54 +24,23 @@ body{
 
 .bodycontent {
   padding-top: 60px;  
+  width: 100%;
+  min-height: 100%;
+}
+  
+@media (min-width: 960px) {
+  .bodycontent {
+    padding-top: 70px;  
+  }
 }
 
-.searchhead {
-  display: inline-block;
-  position: relative;
-  font-size: 25px;
-  font-weight: 700;
+.grid {
+  width: 100%;
 }
-
-.searchsub {
-  display: inline-block;
-  position: relative;
-  font-size: 16px;
-}
-.jumbotron {
-  color: white;
-  height: 200px;
-  background-color: #7986CB;
-}
-
-.headline {
-  margin: 30px auto 10px auto;
-  font-size: 80px;
-  font-weight: 700;
-  margin: 0;
-}
-
-.subhead {
-  font-size: 24px;
-  margin: 0 auto 30px auto;
-}
-
-.subpar {
-  line-height: 1;
-  margin: 5px 0;
-}
-
-.cover {
-  text-align: center;
-  padding: 1rem;
-  border: 1px solid gray;
-  background-color: white;
-  height: 230px;
-  width: 176px;
-}
-
-.own-it {
-  color: green;
+/* Home page/sidenav */
+.homehead {
+  font-size: 60px;
+  margin: 0.3em auto;
 }
 
 .sidenavlist, .featurelist {
@@ -75,14 +56,88 @@ body{
   margin-top: 50px;
 }
 
-.pink {
-  color: pink;
+/* Register form */
+.register-form {
+  max-width: 100%;
+  width: 500px;
+  margin: 0 auto;
+}
+
+/* Add Books page */
+.searchhead {
+  position: relative;
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.searchsub {
+  position: relative;
+  font-size: 16px;
+}
+
+.cover {
+  padding: 1rem 1rem 0 1rem;
+  background-color: white;
+  height: auto;
+  width: auto;
+  max-width: 200px;
+}
+
+.own-it {
+  color: green;
 }
 
 #searchbar {
   max-width: 70%;
+  width: 800px;
 }
 
-#searchbar > input {
-    width: 600px;
+#searchterm {
+  max-width: 100%;
+  width: 800px;
+
+}
+
+/* login page */
+.loginBox {
+  max-width:  90%;
+  width: 500px
+}
+
+.stretch  {
+  width: 100%;
+}
+
+/* Setting dialog */
+.settings-md-panel {
+  min-height: 500px;
+}
+.settings-dialog {
+  background: white;
+  border-radius: 4px;
+  box-shadow: 0 7px 8px -4px rgba(0, 0, 0, 0.2),
+      0 13px 19px 2px rgba(0, 0, 0, 0.14),
+      0 5px 24px 4px rgba(0, 0, 0, 0.12);
+  width: 500px;
+}
+.settings-dialog-content {
+  padding: 0 15px;
+  width: 100%;
+}
+.settings-dialog-content img {
+  height: 300px;
+  margin: auto;
+}
+.settings-dialog-button {
+  width: 100%;
+}
+
+/* Profile */
+#user-stats td {
+  padding: 5px 10px;
+}
+
+.stat {
+  font-size-adjust: 4px;
+  font-weight: 700;
 }

@@ -9,15 +9,15 @@
     function AuthenticationService($http, $window) {
       
       var saveToken = function(token) {
-        $window.localStorage['mean-token'] = token;
+        $window.localStorage['book-token'] = token;
       };
       
       var getToken = function() {
-        return $window.localStorage['mean-token'];
+        return $window.localStorage['book-token'];
       };
       
       var logout = function() {
-        $window.localStorage.removeItem('mean-token');
+        $window.localStorage.removeItem('book-token');
       };
       
       var isLoggedIn = function() {
@@ -43,7 +43,7 @@
           payload = JSON.parse(payload);
           return {
             email: payload.email,
-            name: payload.name
+            username: payload.username
           };
         }
       };

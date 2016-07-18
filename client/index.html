@@ -17,24 +17,26 @@
             class="md-sidenav-left"
             md-component-id="left"
             md-whiteframe="8">
-          <md-toolbar class="md-theme-indigo">
+          <md-toolbar class="md-theme-indigo md-hue-1">
             <h1 class="md-toolbar-tools">A Book Trading Club</h1>
           </md-toolbar>
           <md-content layout-padding>
             
             <ul class='sidenavlist'> 
-             <li ng-repeat="item in appCtrl.menu"><md-button ng-href="{{ item.link }}"><md-icon layout-margin>{{ item.icon }}</md-icon>{{ item.title }}</md-button></li>
+              <li ng-repeat="item in appCtrl.menu"><md-button ng-click="appCtrl.toggleSidenav()" ng-href="{{ item.link }}"><md-icon layout-margin>{{ item.icon }}</md-icon>{{ item.title }}</md-button></li>
+              <li><md-button id="logout" href="/home" ng-click="appCtrl.logout()" ng-show="appCtrl.isLoggedIn"><md-icon>power_settings_new</md-icon> Sign Out</md-button></li>
             </ul>
           </md-content>
         </md-sidenav>
-        <md-content flex layout-padding>
-          <md-nav-bar layout="row" class="fixed" layout-align="start center">
+       <md-toolbar class="fixed">
+          <div class="md-toolbar-tools">
             <md-icon layout-margin ng-click="appCtrl.toggleSidenav()" aria-label="Open Menu">menu</md-icon>
             <h1 layout-margin>Book Trading Club</h1>
-          </md-nav-bar>  
-          <div class="bodycontent" layout="column" layout-fill layout-align="top left" ng-view>
           </div>
-          <div flex></div>
+        </md-toolbar>
+        <md-content flex layout-padding>
+          <div layout="column" flex layout-align="start start" ng-view>
+          </div>
         </md-content>
       </section>
     </div>
@@ -56,6 +58,7 @@
     <script src="/app/register.controller.js"></script>
     <script src="/app/login.controller.js"></script>
     <script src="/app/profile.controller.js"></script>
+    <script src="/app/settings.controller.js"></script>
   </body>
 </html>
 
