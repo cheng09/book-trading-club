@@ -8,8 +8,8 @@
   
   function AllBooksCtrl(DataService, $scope, $mdToast) {
     var vm = this;
-    vm.addToWishList = addToWishList;
-    vm.removeFromWishList = removeFromWishList;
+    vm.addToWishlist = addToWishlist;
+    vm.removeFromWishlist = removeFromWishlist;
     vm.showToast = showToast;
     vm.wishListEligible = wishListEligible;
     $scope.userCollection = [];
@@ -20,6 +20,7 @@
     (function() {
       getLibrary();
       getCollection();
+      getWishlist();
     })();
     
     function getLibrary() {
@@ -38,17 +39,27 @@
         });
     }
     
-    function addToWishList(book) {
+    
+    function getWishlist() {
+      DataService.getWishlist()
+        .success(function(result) {
+          result.forEach(function(book) {
+            $scope.wishlist.push(book.id);
+          });
+        });
+    }
+    
+    function addToWishlist(book) {
       $scope.wishlist.push(book.id);
-      DataService.addToWishList(book)
+      DataService.addToWishlist(book)
         .then(function(result){ 
           vm.showToast(book.title + ' added to your wishlist');
         });
     }
     
-    function removeFromWishList(book) {
+    function removeFromWishlist(book) {
       $scope.wishlist.splice($scope.wishlist.indexOf(book.id),1);
-      DataService.removeFromWishList(book)
+      DataService.removeFromWishlist(book)
         .success(function(result){ 
           vm.showToast(book.title + ' removed from your wishlist');
         });

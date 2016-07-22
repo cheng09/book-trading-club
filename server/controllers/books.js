@@ -6,6 +6,7 @@ var Wishlist = mongoose.model('Wishlist');
 
 var collection = [];
 var wishlist = [];
+var pending = [];
 
 var findUserByEmail = function(email) {
   return new Promise(function(resolve, reject) {
@@ -91,7 +92,7 @@ module.exports.deleteUserBook = function(req, res) {
   });
 };
 
-module.exports.addToWishList = function(req, res) {
+module.exports.addToWishlist = function(req, res) {
   var bookPromise = findBook(req.body.book);
   var userPromise = findUserByEmail(req.body.user.email);
   
@@ -103,7 +104,7 @@ module.exports.addToWishList = function(req, res) {
   });
 };
 
-module.exports.getUserWishList = function(req, res) {
+module.exports.getUserWishlist = function(req, res) {
   wishlist = [];
   findUserByEmail(decodeURIComponent(req.params.email)).then(function(thisUser) {
     Wishlist.find({ user: thisUser }).populate('book').exec(function(err, resultingList) {
@@ -121,7 +122,7 @@ module.exports.getUserWishList = function(req, res) {
   });
 };
 
-module.exports.removeFromWishList = function(req, res) {
+module.exports.removeFromWishlist = function(req, res) {
   var bookid = req.params.bookid;
   var itemIndex;
   findUserByEmail(decodeURIComponent(req.params.email)).then(function(thisUser) {
@@ -129,16 +130,37 @@ module.exports.removeFromWishList = function(req, res) {
       if (err) { throw err; }
       resultingList.forEach(function(item) {
         if (item.book.id === req.params.bookid) {
-          itemIndex = resultingCollection.indexOf(item);
+          itemIndex = resultingList.indexOf(item);
         }
       });
-      Wishlist.remove({ _id: resultingCollection[itemIndex]._id}, function(err, result) {
+      Wishlist.remove({ _id: resultingList[itemIndex]._id}, function(err, result) {
         if (err) { throw err; }
         res.json({ id: bookid });
       });
     });
   });
 };
+
+module.exports.getUserPending = function(req, res) {
+  pending = [];
+  findUserByEmail(decodeURIComponent(req.params.email)).then(function(thisUser) {
+    Wishlist.find().select('book user -_id').exec(function(err, wishlistedBooks) {
+      if (err) { throw err; }
+      var bookArr = wishlistedBooks.map(function(item) { return item.book });
+      Collection.find({'book': {$in: bookArr}, 'owner': thisUser}).exec(function(err, titlesPending) {
+        var pendingIds = [];
+        if (err) { throw err; }
+        titlesPending.forEach(function(datum) {                          
+          pendingIds.push(datum.book);
+        });
+        Wishlist.find({'book': {$in: pendingIds}}).populate('book user').exec(function(err, pendingTrades){
+          if (err) { throw err; }
+          res.json(pendingTrades);
+        })
+      });
+    });
+  });
+}
 
 module.exports.allBooks = function(req, res) {
   console.log("Pulling all distinct books");

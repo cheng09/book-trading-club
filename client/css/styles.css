@@ -37,6 +37,7 @@ p {
 .grid {
   width: 100%;
 }
+
 /* Home page/sidenav */
 .homehead {
   font-size: 60px;
@@ -133,11 +134,23 @@ p {
 }
 
 /* Profile */
-#user-stats td {
+table {
+  border: none;
+}
+
+#user-stats td, #pending-trades td {
   padding: 5px 10px;
 }
 
 .stat {
   font-size-adjust: 4px;
   font-weight: 700;
+}
+
+#pending-trades thead {
+  font-size-adjust: -2px;
+}
+
+#pending-trades tr {
+  border-bottom: 1px solid gray;
 }

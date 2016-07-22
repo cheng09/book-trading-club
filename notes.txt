@@ -1,0 +1,17 @@
+ Collection.find({ book: {$in: ids}, owner: thisUser._id}).exec(function(err, tradesPending){
+        if (err) { throw err; }
+        console.log(tradesPending);
+      });
+      
+    Wishlist.find().select('book').exec(function(err, ids) {
+      if (err) { throw err; }
+      console.log(ids);
+    });
+    
+    
+module.exports.getUserPending = function(req, res) {
+  pending = [];
+  findUserByEmail(decodeURIComponent(req.params.email)).then(function(thisUser) {
+    console.log(thisUser);
+  });
+};

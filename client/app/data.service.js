@@ -14,16 +14,26 @@
           Authorization: 'Bearer ' + AuthenticationService.getToken()
         }
       });
-    };
+    }
     
     function setProfile(user) {
       return $http.post('/api/profile', user);
-    };
+    }
     
     function getCollection() {
       var url = '/api/collection/' + encodeURIComponent(AuthenticationService.currentUser().email);
       return $http.get(url);
-    };
+    }
+    
+    function getWishlist() {
+      var url = '/api/wishlist/' + encodeURIComponent(AuthenticationService.currentUser().email);
+      return $http.get(url);
+    }
+    
+    function getPending() {
+      var url = '/api/pending/' + encodeURIComponent(AuthenticationService.currentUser().email);
+      return $http.get(url);
+    }
     
     function addToCollection(book) {
       return new Promise(function(resolve, reject) {
@@ -54,7 +64,7 @@
       return $http.get('/api/books');
     }
     
-    function addToWishList(book) {
+    function addToWishlist(book) {
       return new Promise(function(resolve, reject) {
         var user = AuthenticationService.currentUser();
         $http.post('/api/wishlist', {
@@ -68,13 +78,26 @@
       });
     }
     
+    function removeFromWishlist(book) {
+      return new Promise(function(resolve, reject) {
+        var user = AuthenticationService.currentUser();
+        $http.get('/api/wishlist/' + encodeURIComponent(user.email) + '/' + book.id )
+          .then(function(result) {
+            resolve(result.data);
+          });
+      });
+    }
+    
     return {
       getProfile: getProfile,
       setProfile: setProfile,
       getCollection: getCollection,
+      getWishlist: getWishlist,
+      getPending: getPending,
       addToCollection: addToCollection,
       removeFromCollection: removeFromCollection,
-      addToWishList: addToWishList,
+      addToWishlist: addToWishlist,
+      removeFromWishlist: removeFromWishlist,
       getAllBooks: getAllBooks
     };
     

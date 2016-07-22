@@ -7,9 +7,9 @@
       <md-grid-tile ng-repeat="book in books" md-colspan="1" md-rowspan="1" flex flex-md="20" flex-lg="17" flex="14">
         <div class="cover" md-whiteframe layout="column" layout-align="center center">
           <h2 ng-hide="book.thumbnail">{{ book.title }}</h2>
-          <img src="{{ book.thumbnail }}" ng-show="book.thumbnail">
+          <img src="{{ book.thumbnail }}" ng-show="book.thumbnail" alt="book.title">
           
-          <md-button ng-show="allbooks.wishListEligible(book)" class="borrow" layout="row" layout-align="center center" ng-click="allbooks.addToWishList(book)">
+          <md-button ng-show="allbooks.wishListEligible(book)" class="borrow" layout="row" layout-align="center center" ng-click="allbooks.addToWishlist(book)">
             <md-icon>favorite_border</md-icon>
             <span style="padding-left: 10px;">Add to wish list</span>
           </md-button>
@@ -17,7 +17,7 @@
             <md-icon style="color: green;">library_books</md-icon> 
             <span style="padding-left: 10px;">My Book</span>
           </md-button>
-          <md-button ng-show="wishlist.indexOf(book.id) > -1" class="wish" layout="row" layout-align="center center" ng-click="allbooks.removeFromWishList(book)">
+          <md-button ng-show="wishlist.indexOf(book.id) > -1" class="wish" layout="row" layout-align="center center" ng-click="allbooks.removeFromWishlist(book)">
             <md-icon class="md-accent">favorite</md-icon>
             <span style="padding-left: 10px;">Wish Listed</span>
           </md-button>

@@ -53,9 +53,13 @@
       icon: "book",
       link: "/books",
     },{
+      title: "Your Profile",
+      icon: "account_circle",
+      link: "/profile",
+    },{
       title: "Your Collection",
       icon: "library_books",
-      link: "/profile",
+      link: "/profile#collection",
     },{
       title: "Add Books",
       icon: "library_add",

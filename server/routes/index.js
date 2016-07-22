@@ -25,9 +25,11 @@ router.post('/collection', ctrlBooks.addToCollection);
 router.get('/collection/:email', ctrlBooks.getUserBooks);
 router.get('/collection/:email/:bookid', ctrlBooks.deleteUserBook);
 
-router.post('/wishlist', ctrlBooks.addToWishList);
-router.get('/wishlist/:email', ctrlBooks.getUserWishList)
-router.get('/wishlist/:email/:bookid', ctrlBooks.removeFromWishList);
+router.post('/wishlist', ctrlBooks.addToWishlist);
+router.get('/wishlist/:email', ctrlBooks.getUserWishlist);
+router.get('/wishlist/:email/:bookid', ctrlBooks.removeFromWishlist);
+
+router.get('/pending/:email', ctrlBooks.getUserPending);
 router.get('/books', ctrlBooks.allBooks);
 
 module.exports = router;
