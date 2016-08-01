@@ -20,7 +20,7 @@ module.exports.profileRead = function(req, res) {
 
 };
 
-module.exports.profileSet = function(req, res) {
+module.exports.profileSet = function(req, res, next) {
 
   console.log('Hello! ' + JSON.stringify(req.body));
   var doc = {
@@ -32,9 +32,7 @@ module.exports.profileSet = function(req, res) {
   console.log('Setting user ' + JSON.stringify(doc));
   User
     .findOneAndUpdate({ username: req.body.username }, {$set: doc}, {new: true}, function(err, user) {
-      if (err) {
-        throw err;
-      }    
+      if (err) { return next(err); }
       res.status(200).json(user);
     });
 };

@@ -27,9 +27,13 @@
     
     function search(term) {
       var url = '/api/search/' + encodeURIComponent(term);
-      $http.get(url).then(function(data){
-        vm.results = data.data;
-      });
+      $http.get(url)
+        .then(function(data){
+          vm.results = data.data;
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
     }
     
    function showToast(msg) {

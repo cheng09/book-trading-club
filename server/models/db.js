@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 var gracefulShutdown;
-var dbURI = 'mongodb://localhost/meanAuth';
+var dbURI = 'mongodb://localhost/bookTrade';
 if (process.env.NODE_ENV === 'production') {
   dbURI = process.env.MONGOLAB_URI;
 }
@@ -50,3 +50,4 @@ require('./users');
 require('./books');
 require('./collections');
 require('./wishlists');
+require('./trades');

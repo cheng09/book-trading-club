@@ -49,21 +49,29 @@
     }];
     
     var menuLoggedIn = [{
-      title: "All Books",
+      title: "Everyone's Books",
       icon: "book",
       link: "/books",
     },{
-      title: "Your Profile",
+      title: "Your Dashboard",
       icon: "account_circle",
-      link: "/profile",
+      link: "/dashboard",
     },{
-      title: "Your Collection",
+      title: "Books You Have",
       icon: "library_books",
-      link: "/profile#collection",
+      link: "/have",
     },{
-      title: "Add Books",
+      title: "Add Books You Have",
       icon: "library_add",
       link: "/search",
+    },{
+      title: "Books You Want",
+      icon: "favorite",
+      link: "/want"
+    },{
+      title: "Books You Are Trading",
+      icon: "share",
+      link: "/trades"
     },{
       title: "Update Settings",
       icon: "settings",

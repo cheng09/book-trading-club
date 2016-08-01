@@ -30,10 +30,25 @@
         controllerAs: 'login',
         templateUrl: 'views/login.html'
       })
-      .when('/profile', {
+      .when('/dashboard', {
         controller: 'ProfileCtrl',
         controllerAs: 'profile',
-        templateUrl: 'views/profile.html'
+        templateUrl: 'views/dashboard.html'
+      })
+      .when('/have', {
+        controller: 'ProfileCtrl',
+        controllerAs: 'profile',
+        templateUrl: 'views/have.html'
+      })
+      .when('/want', {
+        controller: 'ProfileCtrl',
+        controllerAs: 'profile',
+        templateUrl: 'views/want.html'
+      })
+      .when('/trades', {
+        controller: 'ProfileCtrl',
+        controllerAs: 'tradeCtrl',
+        templateUrl: 'views/trades.html'
       })
       .when('/books', {
         controller: 'AllBooksCtrl',
@@ -58,10 +73,10 @@
 
   function run($rootScope, $location, AuthenticationService) {
     $rootScope.$on('$routeChangeStart', function(event, nextRoute, currentRoute) {
-      if ($location.path() === '/profile' && !AuthenticationService.isLoggedIn()) {
+      if ($location.path() === '/dashboard' && !AuthenticationService.isLoggedIn()) {
         $location.path('/');
       } else if ($location.path() === '/' && AuthenticationService.isLoggedIn()) {
-        $location.path('/profile');
+        $location.path('/dashboard');
       }
     });
   }

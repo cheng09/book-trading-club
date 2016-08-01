@@ -1,41 +1,95 @@
+/* Baseline element styles */
 body{
   height: 100% !important;
   width: 100%;
 }
 
 h3, p {
-  margin-top: 5px;
+  margin-top: 10px;
 }
 
-h3 {
+h3, h4 {
   margin-bottom: 5px;
 }
 
 p {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
+a {
+  color: #FF4081;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+thead {
+  font-size: 12px;
+}
+
+td  {
+  border-bottom: solid 1px #DDDDDD;
+  margin: 0;
+  padding: 5px;
+}
+
+tr:hover{
+  background-color: #EEEEEE;
+}
+
+tr>td:first-child {
+  padding-right: 5px;
+}
+
+ol {
+  margin: 0
+}
+
+/* Padding for top menu bar */
+.bodycontent {
+  padding-top: 60px;
+  width: 100%;
+  min-height: 100%;
+}
+
+@media only screen and (min-width: 960px) {
+  .bodycontent {
+    padding-top: 70px;
+  }
+}
+
+/* General classes*/
+.center {
+  text-align: center;
+}
+
+.grid {
+  width: 100%;
+}
+
+.container {
+  position: relative;
+  display: block;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.no-bullets {
+  list-style-type: none;
+}
+
+.primary {
+  color: #3F51B5;
+}
+/* Top bar classes */
 .fixed {
   position: fixed;
   top: 10;
   left: 10;
   z-index: 6;
-}
-
-.bodycontent {
-  padding-top: 60px;  
-  width: 100%;
-  min-height: 100%;
-}
-  
-@media (min-width: 960px) {
-  .bodycontent {
-    padding-top: 70px;  
-  }
-}
-
-.grid {
-  width: 100%;
 }
 
 /* Home page/sidenav */
@@ -76,17 +130,69 @@ p {
   font-size: 16px;
 }
 
+.clearbtn {
+  margin: 0;
+  width: 50px;
+}
+
+#searchterm {
+  width: auto;
+  min-width: 200px;
+}
+
+@media only screen and (max width: 420px) {
+
+}
+
 .cover {
   padding: 1rem 1rem 0 1rem;
   background-color: white;
   height: auto;
   width: auto;
-  max-width: 200px;
+  max-height: 300px;
+  max-width: 175px;
 }
 
-.own-it {
-  color: green;
+.cover img {
+  height: auto;
+  width: auto;
+  max-height: 260px;
+  max-width: 165px;
 }
+
+.want-small {
+  display: none;
+}
+
+.want-large {
+  display: block;
+}
+@media only screen and (max-width: 340px) {
+  .cover {
+    max-width: 145px;
+  }
+
+  .cover img {
+    max-width: 135px;
+  }
+
+  .want-small {
+    display: block;
+  }
+
+  .want-large {
+    display: none;
+  }
+}
+.own-it {
+  -webkit-filter: grayscale(100%);
+     -moz-filter: grayscale(100%);
+       -o-filter: grayscale(100%);
+      -ms-filter: grayscale(100%);
+          filter: grayscale(100%);
+  color: gray;
+}
+
 
 #searchbar {
   max-width: 70%;
@@ -102,7 +208,8 @@ p {
 /* login page */
 .loginBox {
   max-width:  90%;
-  width: 500px
+  width: 500px;
+  margin: 0 auto;
 }
 
 .stretch  {
@@ -133,13 +240,10 @@ p {
   width: 100%;
 }
 
-/* Profile */
+/* Profile & Trades*/
 table {
   border: none;
-}
-
-#user-stats td, #pending-trades td {
-  padding: 5px 10px;
+  border-collapse: collapse;
 }
 
 .stat {
@@ -147,10 +251,42 @@ table {
   font-weight: 700;
 }
 
-#pending-trades thead {
-  font-size-adjust: -2px;
+.table-label {
+  font-size: 12px;
 }
 
-#pending-trades tr {
-  border-bottom: 1px solid gray;
+.trade-card {
+  min-width: 100px;
+}
+
+.little-table .title {
+  font-size: 18px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.little-table .city {
+  font-style: italic;
+  font-size: 14px;
+}
+
+.big-table {
+  display: none;
+}
+.little-table {
+  display: block;
+}
+
+@media only screen and (min-width: 700px) {
+  .big-table {
+    display: block;
+  }
+
+  .little-table {
+    display: none;
+  }
+}
+
+#instructions {
+  max-width: 640px;
 }

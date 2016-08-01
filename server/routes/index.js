@@ -1,4 +1,4 @@
-var express = require('express');
+  var express = require('express');
 var router = express.Router();
 var jwt = require('express-jwt');
 var auth = jwt({
@@ -29,7 +29,13 @@ router.post('/wishlist', ctrlBooks.addToWishlist);
 router.get('/wishlist/:email', ctrlBooks.getUserWishlist);
 router.get('/wishlist/:email/:bookid', ctrlBooks.removeFromWishlist);
 
-router.get('/pending/:email', ctrlBooks.getUserPending);
+router.get('/:username/trades/pending', ctrlBooks.getUserPending);
+router.get('/:username/trades/donor',ctrlBooks.completedAsDonor);
+router.get('/:username/trades/recipient', ctrlBooks.completedAsRecipient);
+router.post('/trade/approve', ctrlBooks.approveTrade);
+router.get('/:username/trades/inprogress', ctrlBooks.getInProgress);
+router.get('/trade/:id/complete', ctrlBooks.completeTrade);
+router.get('/trade/:id/delete', ctrlBooks.cancelTrade);
 router.get('/books', ctrlBooks.allBooks);
 
 module.exports = router;

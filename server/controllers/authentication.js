@@ -7,7 +7,7 @@ var sendJSONresponse = function(res, status, content) {
   res.json(content);
 };
 
-module.exports.register = function(req, res) {
+module.exports.register = function(req, res, next) {
   if(!req.body.username || !req.body.email || !req.body.password) {
     sendJSONresponse(res, 400, {
       "message": "User, email and password are required fields"
@@ -27,10 +27,7 @@ module.exports.register = function(req, res) {
   user.setPassword(req.body.password);
 
   user.save(function(err) {
-    if (err) { 
-      res.status(400)
-      res.json({"message": err}); 
-    }
+    if (err) { return next(err); }
     var token;
     token = user.generateJwt();
     res.status(200);
@@ -40,7 +37,7 @@ module.exports.register = function(req, res) {
   });
 };
 
-module.exports.login = function(req, res) {
+module.exports.login = function(req, res, next) {
   
   if(!req.body.email || !req.body.password) {
     sendJSONresponse(res, 400, {
@@ -53,10 +50,8 @@ module.exports.login = function(req, res) {
     var token;
 
     // If Passport throws/catches an error
-    if (err) {
-      res.status(404).json(err);
-      return;
-    }
+    if (err) { return next(err); }
+
 
     // If a user is found
     if(user){

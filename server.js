@@ -42,7 +42,18 @@ app.use(function (err, req, res, next) {
   if (err.name === 'UnauthorizedError') {
     res.status(401);
     res.json({"message" : err.name + ": " + err.message});
+  } else {
+    next(err);
   }
+});
+
+app.use(function(err, req, res, next) {
+  if (res.headersSent) {
+    return next(err);
+  }
+  console.error(err.stack);
+  res.status(500);
+  res.json({"message" : err.name + ": " + err.message});
 });
 
 var port = process.env.PORT || 3000
