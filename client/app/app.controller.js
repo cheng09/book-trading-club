@@ -1,39 +1,40 @@
 (function() {
-  
+
   angular
     .module('app')
     .controller('AppCtrl', AppCtrl);
-  
-  AppCtrl.$inject = ['$mdSidenav', 'AuthenticationService'];
-  
-  function AppCtrl($mdSidenav, AuthenticationService) {
+
+  AppCtrl.$inject = ['$mdSidenav', 'AuthenticationService', '$scope'];
+
+  function AppCtrl($mdSidenav, AuthenticationService, $scope) {
     var vm = this;
     vm.toggleSidenav = toggleSidenav;
-    vm.isLoggedIn = AuthenticationService.isLoggedIn();
-    vm.currentUser = AuthenticationService.currentUser();
-    vm.setMenu = setMenu;
-    vm.menu = vm.menu;
-    vm.logout = logout;
-    
+    $scope.isLoggedIn = AuthenticationService.isLoggedIn();
+    $scope.currentUser = AuthenticationService.currentUser();
+    $scope.setMenu = setMenu;
+    $scope.menu = $scope.menu;
+    $scope.logout = logout;
+
     function toggleSidenav() {
-      vm.setMenu();
+      $scope.isLoggedin
+      $scope.setMenu();
       $mdSidenav("left").toggle();
     }
-    
+
     function setMenu() {
       if (AuthenticationService.isLoggedIn()) {
-        vm.menu = menuLoggedIn;
+        $scope.menu = menuLoggedIn;
       }  else {
-        vm.menu = menuLoggedOut;
+        $scope.menu = menuLoggedOut;
       }
     }
-    
+
     function logout() {
       console.log("logging out")
       vm.toggleSidenav();
       AuthenticationService.logout();
-    }    
-    
+    }
+
     var menuLoggedOut = [{
       title: "Home",
       icon: "home",
@@ -47,7 +48,7 @@
       icon: "",
       link: "/register",
     }];
-    
+
     var menuLoggedIn = [{
       title: "Everyone's Books",
       icon: "book",
@@ -78,5 +79,5 @@
       link: "/settings",
     }];
   }
-  
+
 })();

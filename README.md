@@ -13,6 +13,7 @@ The site allows you to list books you own that you would like to trade (very eas
 ## What's Still to Come
 - Better error handling
 - Many more tests
+- Set up authorization on routes that require it
 
 ## Tech Stack/Tools Used
 - MEAN stack:
