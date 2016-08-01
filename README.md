@@ -10,6 +10,10 @@ The site allows you to list books you own that you would like to trade (very eas
 - User Story: I can update my settings to store my full name, city, and state.
 - User Story: I can propose a trade and wait for the other user to accept the trade.
 
+## What's Still to Come
+- Better error handling
+- Many more tests
+
 ## Tech Stack/Tools Used
 - MEAN stack:
     - Node.js

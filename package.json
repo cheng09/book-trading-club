@@ -1,9 +1,9 @@
 {
   "name": "book-trading-club",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "List your books and find books to trade",
   "main": "server.js",
-  "repository": "",
+  "repository": "https://github.com/ubershibs/book-trading-club",
   "directories": {
     "test": "test"
   },
@@ -36,5 +36,8 @@
     "chai": "^3.5.0",
     "chai-http": "^3.0.0",
     "mocha": "^2.5.3"
+  },
+  "engines": {
+    "node": "4.4.7"
   }
 }
