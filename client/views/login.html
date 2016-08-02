@@ -17,7 +17,7 @@
             <input class="stretch" type="password" ng-model="login.credentials.password">
           </md-input-container>
           <div layout="row" layout-align="center center" style="padding-top:20px;">
-            <md-button role="submit" type="submit" ng-click="login.onSubmit()" class="md-raised md-accent">
+            <md-button role="submit" type="submit" ng-click="login.onSubmit()" class="md-raised md-accent" id="submit">
               Sign In
             </md-button>
             <div flex></div>
@@ -31,3 +31,11 @@
     </md-form>
   </div>
 </div>
+<script>
+  $('md-form').on("keypress", function(e) {
+    var code = e.keyCode || e.which;
+    if(code == 13) { //Enter keycode
+      $('#submit').trigger('click');
+    }
+  });
+</script>

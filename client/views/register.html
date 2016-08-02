@@ -11,7 +11,7 @@
           <label for="username">Username*</label>
           <input type="text" class="stretch"  id="username" ng-model="register.credentials.username">
         </md-input-container>
-        <md-input-container class="stretch">
+        <md-input-container class="stretch" id="password">
           <label for="password">Password*</label>
           <input type="password" class="stretch"  ng-model="register.credentials.password">
         </md-input-container>
@@ -32,7 +32,7 @@
           <input type="text" class="stretch"  id="State" ng-model="register.credentials.state">
         </md-input-container>
         <div layout="row" layout-align="center center" style="padding-top:20px;">
-          <md-button role="submit" type="submit" ng-click="register.onSubmit()" class="md-raised md-primary">
+          <md-button role="submit" type="submit" ng-click="register.onSubmit()" class="md-raised md-primary" id="submit">
             Register
           </md-button>
           <div flex></div>
@@ -44,6 +44,12 @@
       </md-content>
     </md-form>
   </div>
-</div>   
-        
-       
+</div>
+<script>
+  $('md-form').on("keypress", function(e) {
+    var code = e.keyCode || e.which;
+    if(code == 13) { //Enter keycode
+      $('#submit').trigger('click');
+    }
+  });
+</script>

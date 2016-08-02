@@ -43,7 +43,7 @@
             <tr ng-repeat="trade in pending">
               <td layout="column" layout-align="center center">
                 <span class="title">{{ trade.book.title }}</span>
-                <span class="city" ng-show="trade.user.city">{{ trade.user.city }}, {{ trade.user.state }}</span><span class="city" ng-hide="user.city">an undisclosed location</span>
+                <span class="city" ng-show="trade.user.city">{{ trade.user.city }}, {{ trade.user.state }}</span><span class="city" ng-hide="trade.user.city">an undisclosed location</span>
                 <md-button ng-click="approveTrade(trade)" class="md-raised md-accent">Initiate Trade</md-button>
               </td>
             </tr>
@@ -93,7 +93,7 @@
             </tbody>
           </table>
           <table class="little-table" ng-show="inProgressDonor.length > 0">
-            <tr ng-repeat="trade in tradeCtrl.inProgressDonor track by $index">
+            <tr ng-repeat="trade in inProgressDonor track by $index">
               <td layout="column" layout-align="center center">
                 <span class="title">{{ trade.book.title }}</span>
                 <span ng-show="trade.recipient.firstname">{{ trade.recipient.firstname }} {{ trade.recipient.lastname }}</span><span ng-hide="trade.recipient.firstname">{{ trade.recipient.username }}</span>
@@ -155,7 +155,7 @@
             </tbody>
           </table>
           <table class="little-table" ng-show="inProgressRecipient.length > 0">
-            <tr ng-repeat="trade in tradeCtrl.inProgressRecipient track by $index">
+            <tr ng-repeat="trade in inProgressRecipient track by $index">
               <td layout="column" layout-align="center center">
                 <span class="title">{{ trade.book.title }}</span>
                 <span ng-show="trade.donor.firstname">{{ trade.donor.firstname }} {{ trade.donor.lastname }}</span><span ng-hide="trade.donor.firstname">{{ trade.donor.username }}</span>

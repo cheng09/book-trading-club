@@ -14,6 +14,8 @@ The site allows you to list books you own that you would like to trade (very eas
 - Better error handling
 - Many more tests
 - Set up authorization on routes that require it
+- Lost/forgot password function
+- ~Enter key should trigger submit on login forms~ - Done
 
 ## Tech Stack/Tools Used
 - MEAN stack:

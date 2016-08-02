@@ -24,7 +24,7 @@
 
             <ul class='sidenavlist'>
               <li ng-repeat="item in menu"><md-button ng-click="appCtrl.toggleSidenav()" ng-href="{{ item.link }}"><md-icon layout-margin>{{ item.icon }}</md-icon>{{ item.title }}</md-button></li>
-              <li><md-button id="logout" href="/home" ng-click="logout()" ng-show="isLoggedIn"><md-icon>power_settings_new</md-icon> Sign Out</md-button></li>
+              <li><md-button id="logout" href="/home" ng-click="logout()" ng-hide="!isLoggedIn"><md-icon>power_settings_new</md-icon> Sign Out</md-button></li>
             </ul>
           </md-content>
         </md-sidenav>

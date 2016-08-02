@@ -33,6 +33,7 @@
       console.log("logging out")
       vm.toggleSidenav();
       AuthenticationService.logout();
+      $scope.isLoggedin = AuthenticationService.isLoggedIn();
     }
 
     var menuLoggedOut = [{
