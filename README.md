@@ -16,6 +16,8 @@ The site allows you to list books you own that you would like to trade (very eas
 - Set up authorization on routes that require it
 - Lost/forgot password function
 - ~Enter key should trigger submit on login forms~ - Done
+- Fix Search button on search results page on mobile
+- Paged results for /search and /books
 
 ## Tech Stack/Tools Used
 - MEAN stack:
