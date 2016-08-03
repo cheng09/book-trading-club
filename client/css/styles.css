@@ -25,6 +25,12 @@ a:hover {
   text-decoration: underline;
 }
 
+table {
+  border: none;
+  border-collapse: collapse;
+  width: auto;
+}
+
 thead {
   font-size: 12px;
 }
@@ -33,6 +39,7 @@ td  {
   border-bottom: solid 1px #DDDDDD;
   margin: 0;
   padding: 5px;
+  width: auto;
 }
 
 tr:hover{
@@ -245,10 +252,7 @@ ol {
 }
 
 /* Profile & Trades*/
-table {
-  border: none;
-  border-collapse: collapse;
-}
+
 
 .stat {
   font-size-adjust: 4px;

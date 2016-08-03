@@ -1,6 +1,6 @@
 <div layout="column" class="bodycontent">
   <div layout="row" layout-wrap layout-margin>
-    <md-card>
+    <md-card flex="auto">
       <md-toolbar class="md-hue-1" Layout-align="end start" layout-padding>
         <md-cart-title layout="column">
           <md-card-title-text>
@@ -8,7 +8,7 @@
           </md-card-title-text>
         </md-card-title>
       </md-toolbar>
-      <md-card-content layout="column">
+      <md-card-content layout="column" layout-align="start center">
         <table id="user-stats">
           <tbody>
             <tr>
@@ -52,7 +52,7 @@
       </md-card-content>
     </md-card>
 
-    <md-card>
+    <md-card flex="auto">
       <md-toolbar class="md-hue-3" Layout-align="end start"layout-padding>
         <md-cart-title layout="column">
           <md-card-title-text>
@@ -60,7 +60,7 @@
           </md-card-title-text>
         </md-card-title>
       </md-toolbar>
-      <md-card-content layout="column">
+      <md-card-content layout="column" layout-align="start center">
         <p>Email: {{ profile.user.email }}</p>
         <p ng-show="profile.user.firstname">Name: {{ profile.user.firstname }} {{ profile.user.lastname }}</p>
         <p ng-show="profile.user.city">Location: {{ profile.user.city}}, {{profile.user.state }}</p>
@@ -71,7 +71,7 @@
       </md-card-actions>
     </md-card>
 
-    <md-card id="instructions">
+    <md-card id="instructions" flex="auto">
       <md-toolbar class="md-accent" Layout-align="end start" layout-padding>
         <md-cart-title>
           <md-card-title-text>
